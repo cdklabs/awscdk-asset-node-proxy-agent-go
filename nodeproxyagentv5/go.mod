@@ -3,5 +3,5 @@ module github.com/cdklabs/awscdk-asset-node-proxy-agent-go/nodeproxyagentv5/v2
 go 1.18
 
 require (
-	github.com/aws/jsii-runtime-go v1.70.0
+	github.com/aws/jsii-runtime-go v1.71.0
 )
