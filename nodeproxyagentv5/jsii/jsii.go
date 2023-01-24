@@ -10,12 +10,12 @@ import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 )
 
-//go:embed aws-cdk-asset-node-proxy-agent-v5-2.0.38.tgz
+//go:embed aws-cdk-asset-node-proxy-agent-v5-2.0.39.tgz
 var tarball []byte
 
 // Initialize loads the necessary packages in the @jsii/kernel to support the enclosing module.
 // The implementation is idempotent (and hence safe to be called over and over).
 func Initialize() {
 	// Load this library into the kernel
-	_jsii_.Load("@aws-cdk/asset-node-proxy-agent-v5", "2.0.38", tarball)
+	_jsii_.Load("@aws-cdk/asset-node-proxy-agent-v5", "2.0.39", tarball)
 }
