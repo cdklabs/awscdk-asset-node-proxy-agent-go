@@ -17,20 +17,22 @@ via the CDK `Asset` construct.
 Usage:
 
 ```go
-import { ASSET_FILE, LAYER_SOURCE_DIR } from '@aws-cdk/asset-node-proxy-agent';
-import * as lambda from 'aws-cdk-lib/aws-lambda';
-import * as s3_assets from 'aws-cdk-lib/aws-s3-assets';
-import { FileSystem } from 'aws-cdk-lib';
+// Example automatically generated from non-compiling source. May contain errors.
+import "github.com/aws-samples/dummy/awscdkassetnodeproxyagent"
+import lambda "github.com/aws/aws-cdk-go/awscdk"
+import s3_assets "github.com/aws/aws-cdk-go/awscdk"
+import "github.com/aws/aws-cdk-go/awscdk"
 
-declare const fn: lambda.Function;
-const asset = new s3_assets.Asset(this, 'layer-asset', {
-  path: ASSET_FILE,
-  assetHash: FileSystem.fingerprint(LAYER_SOURCE_DIR),
-});
+var fn function
 
-fn.addLayers(new lambda.LayerVersion(this, 'ProxyAgentLayer', {
-  code: lambda.Code.fromBucket(asset.bucket, asset.s3ObjectKey),
-}));
+asset := s3_assets.NewAsset(this, jsii.String("layer-asset"), &assetProps{
+	path: *awscdkassetnodeproxyagent.ASSET_FILE,
+	assetHash: awscdk.FileSystem.fingerprint(*awscdkassetnodeproxyagent.LAYER_SOURCE_DIR),
+})
+
+fn.addLayers(lambda.NewLayerVersion(this, jsii.String("ProxyAgentLayer"), &layerVersionProps{
+	code: lambda.code.fromBucket(asset.bucket, asset.s3ObjectKey),
+}))
 ```
 
 [`proxy-agent`](https://www.npmjs.com/package/proxy-agent) will be installed under `/nodejs/node_modules`.
