@@ -19,19 +19,19 @@ Usage:
 ```go
 // Example automatically generated from non-compiling source. May contain errors.
 import "github.com/aws-samples/dummy/awscdkassetnodeproxyagent"
-import lambda "github.com/aws/aws-cdk-go/awscdk"
+import "github.com/aws/aws-cdk-go/awscdk"
 import s3_assets "github.com/aws/aws-cdk-go/awscdk"
 import "github.com/aws/aws-cdk-go/awscdk"
 
 var fn function
 
-asset := s3_assets.NewAsset(this, jsii.String("layer-asset"), &assetProps{
-	path: *awscdkassetnodeproxyagent.ASSET_FILE,
-	assetHash: awscdk.FileSystem.fingerprint(*awscdkassetnodeproxyagent.LAYER_SOURCE_DIR),
+asset := s3_assets.NewAsset(this, jsii.String("layer-asset"), &AssetProps{
+	Path: awscdkassetnodeproxyagent.ASSET_FILE,
+	AssetHash: awscdk.FileSystem_Fingerprint(*awscdkassetnodeproxyagent.LAYER_SOURCE_DIR),
 })
 
-fn.addLayers(lambda.NewLayerVersion(this, jsii.String("ProxyAgentLayer"), &layerVersionProps{
-	code: lambda.code.fromBucket(asset.bucket, asset.s3ObjectKey),
+fn.AddLayers(lambda.NewLayerVersion(this, jsii.String("ProxyAgentLayer"), &LayerVersionProps{
+	Code: lambda.Code_FromBucket(asset.Bucket, asset.S3ObjectKey),
 }))
 ```
 
