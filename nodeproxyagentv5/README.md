@@ -19,19 +19,19 @@ Usage:
 ```go
 // Example automatically generated from non-compiling source. May contain errors.
 import "github.com/aws-samples/dummy/awscdkassetnodeproxyagent"
-import "github.com/aws-samples/dummy/awscdklib/awslambda"
-import s3_assets "github.com/aws-samples/dummy/awscdklib/awss3assets"
+import "github.com/aws/aws-cdk-go/awscdk"
+import s3_assets "github.com/aws/aws-cdk-go/awscdk"
 import "github.com/aws-samples/dummy/awscdklib"
 
-var fn lambda.Function
+var fn function
 
-asset := s3_assets.NewAsset(this, jsii.String("layer-asset"), map[string]interface{}{
-	"path": awscdkassetnodeproxyagent.ASSET_FILE,
-	"assetHash": awscdklib.FileSystem_fingerprint(awscdkassetnodeproxyagent.LAYER_SOURCE_DIR),
+asset := s3_assets.NewAsset(this, jsii.String("layer-asset"), &assetProps{
+	path: awscdkassetnodeproxyagent.ASSET_FILE,
+	assetHash: *awscdklib.FileSystem_Fingerprint(*awscdkassetnodeproxyagent.LAYER_SOURCE_DIR),
 })
 
-fn.addLayers(lambda.NewLayerVersion(this, jsii.String("ProxyAgentLayer"), map[string]interface{}{
-	"code": lambda.Code_fromBucket(asset.bucket, asset.s3ObjectKey),
+fn.addLayers(lambda.NewLayerVersion(this, jsii.String("ProxyAgentLayer"), &layerVersionProps{
+	code: lambda.code_FromBucket(asset.bucket, asset.s3ObjectKey),
 }))
 ```
 
