@@ -21,17 +21,17 @@ Usage:
 import "github.com/aws-samples/dummy/awscdkassetnodeproxyagent"
 import "github.com/aws/aws-cdk-go/awscdk"
 import s3_assets "github.com/aws/aws-cdk-go/awscdk"
-import "github.com/aws-samples/dummy/awscdklib"
+import "github.com/aws/aws-cdk-go/awscdk"
 
 var fn function
 
-asset := s3_assets.NewAsset(this, jsii.String("layer-asset"), &assetProps{
-	path: awscdkassetnodeproxyagent.ASSET_FILE,
-	assetHash: *awscdklib.FileSystem_Fingerprint(*awscdkassetnodeproxyagent.LAYER_SOURCE_DIR),
+asset := s3_assets.NewAsset(this, jsii.String("layer-asset"), &AssetProps{
+	Path: awscdkassetnodeproxyagent.ASSET_FILE,
+	AssetHash: awscdk.FileSystem_Fingerprint(*awscdkassetnodeproxyagent.LAYER_SOURCE_DIR),
 })
 
-fn.addLayers(lambda.NewLayerVersion(this, jsii.String("ProxyAgentLayer"), &layerVersionProps{
-	code: lambda.code_FromBucket(asset.bucket, asset.s3ObjectKey),
+fn.AddLayers(lambda.NewLayerVersion(this, jsii.String("ProxyAgentLayer"), &LayerVersionProps{
+	Code: lambda.Code_FromBucket(asset.Bucket, asset.S3ObjectKey),
 }))
 ```
 
