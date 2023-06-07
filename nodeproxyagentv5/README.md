@@ -17,8 +17,7 @@ via the CDK `Asset` construct.
 Usage:
 
 ```go
-// Example automatically generated from non-compiling source. May contain errors.
-import "github.com/aws-samples/dummy/awscdkassetnodeproxyagent"
+import "github.com/aws-samples/dummy/awscdkassetnodeproxyagentv5"
 import "github.com/aws/aws-cdk-go/awscdk"
 import s3_assets "github.com/aws/aws-cdk-go/awscdk"
 import "github.com/aws/aws-cdk-go/awscdk"
@@ -26,8 +25,8 @@ import "github.com/aws/aws-cdk-go/awscdk"
 var fn function
 
 asset := s3_assets.NewAsset(this, jsii.String("layer-asset"), &AssetProps{
-	Path: awscdkassetnodeproxyagent.ASSET_FILE,
-	AssetHash: awscdk.FileSystem_Fingerprint(*awscdkassetnodeproxyagent.LAYER_SOURCE_DIR),
+	Path: awscdkassetnodeproxyagentv5.ASSET_FILE,
+	AssetHash: awscdk.FileSystem_Fingerprint(*awscdkassetnodeproxyagentv5.LAYER_SOURCE_DIR),
 })
 
 fn.AddLayers(lambda.NewLayerVersion(this, jsii.String("ProxyAgentLayer"), &LayerVersionProps{
