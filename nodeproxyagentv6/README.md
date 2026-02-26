@@ -22,7 +22,7 @@ import "github.com/aws/aws-cdk-go/awscdk"
 import s3_assets "github.com/aws/aws-cdk-go/awscdk"
 import "github.com/aws/aws-cdk-go/awscdk"
 
-var fn function
+var fn Function
 
 asset := s3_assets.NewAsset(this, jsii.String("layer-asset"), &AssetProps{
 	Path: awscdkassetnodeproxyagentv6.ASSET_FILE,
